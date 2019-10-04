@@ -14,7 +14,7 @@ class _SettingsPageState extends State<SettingsPage> {
   
   bool _secondColor;
   int _gender;
-  String _name = 'Rick Snachez ';
+  String _name;
 
   final prefs = new UserPrefs();
 
@@ -23,11 +23,11 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   void initState() {
     super.initState();
-
+    prefs.lastPage = SettingsPage.routeName;
     _gender = prefs.gender;
     _secondColor = prefs.secondColor;
 
-    _textController = new TextEditingController( text: _name);
+    _textController = new TextEditingController( text: prefs.userName);
   }
 
   
@@ -44,6 +44,7 @@ class _SettingsPageState extends State<SettingsPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Ajustes'),
+        backgroundColor: (prefs.secondColor) ? Colors.teal : Colors.blue,
       ),
       drawer: MenuDrawer(),
       body: ListView(
@@ -88,7 +89,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 labelText: 'Nombre',
                 helperText: 'Nombre de usuario'
               ),
-              onChanged: ( value ) {},
+              onChanged: ( value ) {
+                prefs.userName = value;
+              },
             ),
           ),
 

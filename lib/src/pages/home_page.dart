@@ -10,10 +10,12 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    prefs.lastPage = HomePage.routeName;
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Preferencias de Usuario'),
+        backgroundColor: (prefs.secondColor) ? Colors.teal : Colors.blue,
       ),
       drawer: MenuDrawer(),
       body: Column(
@@ -23,7 +25,7 @@ class HomePage extends StatelessWidget {
           Divider(),
           Text('Genero: ${ prefs.gender }'),
           Divider(),
-          Text('Nombre de Usuario'),
+          Text('Nombre de Usuario: ${ prefs.userName }'),
           Divider(),
         ],
       ),

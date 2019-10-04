@@ -15,7 +15,7 @@ class UserPrefs {
    _prefs = await SharedPreferences.getInstance();
   }
 
-  //get y set
+  //get y set gender
 
   get gender {
     return _prefs.getInt('gender') ?? 1;
@@ -25,6 +25,7 @@ class UserPrefs {
     _prefs.setInt('gender', value);
   }
 
+//get y set second color
  get secondColor {
     return _prefs.getBool('secondColor') ?? false;
   }
@@ -33,7 +34,23 @@ class UserPrefs {
     _prefs.setBool('secondColor', value);
   }
 
- 
+ //get y set name 
+ get userName {
+    return _prefs.getString('userName') ?? 'Rick Sanchez';
+  }
+
+ set userName( String value ) {
+    _prefs.setString('userName', value);
+  }
+
+  //get y set last page
+ get lastPage {
+    return _prefs.getString('lastPage') ?? 'home';
+  }
+
+ set lastPage( String value ) {
+    _prefs.setString('lastPage', value);
+  }
 
  /*  //no se usan
   bool  _secondColor;
